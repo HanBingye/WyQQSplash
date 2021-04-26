@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WyQQSplash</string>
+    <string name="main_rb_hangzhou">杭州</string>
+    <string name="main_rb_shanghai">上海</string>
+    <string name="main_rb_shenzhen">深圳</string>
+    <string name="main_rb_beijing">北京</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
