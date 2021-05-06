@@ -61,9 +61,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     public void afterBindView() {
         initFragment();
-        rbHangzhou.setChecked(true);
-        rgMainTop.setOnCheckedChangeListener(this);
-        rgMainBottom.setOnCheckedChangeListener(this);
+
         changeAnimation(rgMainBottom, rgMainTop);
 
 
@@ -84,6 +82,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         transaction.hide(shanghaiFrag);
         transaction.hide(shenzhenFrag);
         transaction.commit();
+
+        rbHangzhou.setChecked(true);
+        rgMainTop.setOnCheckedChangeListener(this);
+        rgMainBottom.setOnCheckedChangeListener(this);
 
     }
 

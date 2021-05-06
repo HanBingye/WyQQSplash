@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WyQQSplash">
-
-        <activity android:name=".main.MainActivity"></activity>
+        <activity android:name=".main.hangzhou.HangzhouDetailActivity"></activity>
+        <activity android:name=".main.MainActivity" />
         <activity
             android:name=".splash.SplashActivity"
             android:theme="@style/Fill">
