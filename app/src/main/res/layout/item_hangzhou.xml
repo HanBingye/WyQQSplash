@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/iv_hangzhou_item"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/hangzhou" />
+
+    <TextView
+        android:id="@+id/tv_hangzhou_item"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:background="@color/color_FF7F1D"
+        android:gravity="center"
+        android:text="上海市欢迎您"
+        android:textColor="@color/white" />
+</LinearLayout>
