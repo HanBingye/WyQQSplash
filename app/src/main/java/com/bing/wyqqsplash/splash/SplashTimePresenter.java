@@ -1,7 +1,7 @@
 package com.bing.wyqqsplash.splash;
 
-import com.bing.wyqqsplash.mvp.IMvpView;
-import com.bing.wyqqsplash.mvp.base.BaseMvpPresenter;
+import com.bing.mvp.mvp.IMvpView;
+import com.bing.mvp.mvp.base.BaseMvpPresenter;
 
 public class SplashTimePresenter extends BaseMvpPresenter {
     private SplashActivity activity;

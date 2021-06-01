@@ -1,16 +1,18 @@
 package com.bing.wyqqsplash.main;
 
-import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.bing.wyqqsplash.R;
 import com.bing.wyqqsplash.base.BaseActivity;
 import com.bing.wyqqsplash.base.ViewInject;
@@ -28,15 +30,11 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @BindView(R.id.bt_fab)
     FloatingActionButton btFab;
-    @BindView(R.id.rb_hangzhou)
-    RadioButton rbHangzhou;
-    @BindView(R.id.rb_shanghai)
-    RadioButton rbShanghai;
+
 
     @BindView(R.id.fl_main_bottom)
     FrameLayout flMainBottom;
-    @BindView(R.id.rg_main_top)
-    RadioGroup rgMainTop;
+
     @BindView(R.id.rb_shenzhen)
     RadioButton rbShenzhen;
     @BindView(R.id.rb_beijing)
@@ -45,18 +43,21 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     RadioGroup rgMainBottom;
     @BindView(R.id.fl_main_top)
     FrameLayout flMainTop;
+    @BindView(R.id.rb_hangzhou)
+    LottieAnimationView rbHangzhou;
+    @BindView(R.id.rb_shanghai)
+    LottieAnimationView rbShanghai;
+    @BindView(R.id.rg_main_top)
+    LinearLayout rgMainTop;
     private boolean change;
     private BeijingFrag beijingFrag;
     private HangzhouFrag hangzhouFrag;
     private ShanghaiFrag shanghaiFrag;
     private ShenzhenFrag shenzhenFrag;
     private FragmentManager manager;
+    private boolean isHangzhouChecked;
+    private boolean isShanghaiChecked;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Override
     public void afterBindView() {
@@ -82,10 +83,41 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         transaction.hide(shanghaiFrag);
         transaction.hide(shenzhenFrag);
         transaction.commit();
+        isHangzhouChecked = true;
+        rbHangzhou.playAnimation();
 
-        rbHangzhou.setChecked(true);
-        rgMainTop.setOnCheckedChangeListener(this);
+//        rgMainTop.setOnCheckedChangeListener(this);
         rgMainBottom.setOnCheckedChangeListener(this);
+
+        rbHangzhou.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = manager.beginTransaction();
+                showHangzhouFrag(transaction);
+                transaction.commit();
+                rbHangzhou.playAnimation();
+                rbShanghai.reverseAnimation();
+                isShanghaiChecked = false;
+                isHangzhouChecked = true;
+
+
+            }
+        });
+        rbShanghai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = manager.beginTransaction();
+                showShanghaiFrag(transaction);
+                transaction.commit();
+                rbShanghai.playAnimation();
+                rbHangzhou.reverseAnimation();
+                isHangzhouChecked = false;
+                isShanghaiChecked = true;
+
+
+            }
+        });
+
 
     }
 
@@ -106,10 +138,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                     }
                 } else {
                     changeAnimation(rgMainBottom, rgMainTop);
-                    if (rbHangzhou.isChecked()) {
+                    if (isHangzhouChecked) {
                         showHangzhouFrag(transaction);
                     }
-                    if (rbShanghai.isChecked()) {
+                    if (isShanghaiChecked) {
                         showShanghaiFrag(transaction);
                     }
                 }
@@ -119,7 +151,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     }
 
 
-    private void changeAnimation(RadioGroup gone, RadioGroup show) {
+    private void changeAnimation(ViewGroup gone, ViewGroup show) {
         //消失的动画
         gone.clearAnimation();
         Animation animationGone = AnimationUtils.loadAnimation(this, R.anim.main_rb_gone);
@@ -128,6 +160,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         //展示的动画
         show.clearAnimation();
         Animation animationShow = AnimationUtils.loadAnimation(this, R.anim.main_rb_show);
+
         show.setAnimation(animationShow);
         show.setVisibility(View.VISIBLE);
 
@@ -141,18 +174,18 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 showBeijingFrag(transaction);
 
                 break;
-            case R.id.rb_shanghai:
-                showShanghaiFrag(transaction);
-
-                break;
+//            case R.id.rb_shanghai:
+//                showShanghaiFrag(transaction);
+//
+//                break;
             case R.id.rb_shenzhen:
                 showShenzhenFrag(transaction);
 
                 break;
-            case R.id.rb_hangzhou:
-                showHangzhouFrag(transaction);
-
-                break;
+//            case R.id.rb_hangzhou:
+//                showHangzhouFrag(transaction);
+//
+//                break;
         }
         transaction.commit();
     }
@@ -185,4 +218,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         transaction.hide(shenzhenFrag);
         transaction.show(beijingFrag);
     }
+
+
 }

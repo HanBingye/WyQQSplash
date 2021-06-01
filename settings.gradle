@@ -1,2 +1,5 @@
+include ':refresh'
+include ':http'
+include ':mvp'
 include ':app'
 rootProject.name = "WyQQSplash"

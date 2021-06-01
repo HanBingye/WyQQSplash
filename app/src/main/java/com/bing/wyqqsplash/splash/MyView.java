@@ -28,4 +28,6 @@ public class MyView extends VideoView {
         setMeasuredDimension(width,height);
 
     }
+
+
 }
