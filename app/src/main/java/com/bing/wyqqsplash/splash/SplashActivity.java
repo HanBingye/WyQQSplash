@@ -3,14 +3,13 @@ package com.bing.wyqqsplash.splash;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.bing.wyqqsplash.base.BaseActivity;
-import com.bing.wyqqsplash.main.MainActivity;
 import com.bing.wyqqsplash.R;
+import com.bing.wyqqsplash.base.BaseActivity;
 import com.bing.wyqqsplash.base.ViewInject;
+import com.bing.wyqqsplash.main.MainActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -25,12 +24,7 @@ public class SplashActivity extends BaseActivity {
     TextView tvSkip;
     private SplashTimePresenter splashTimePresenter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-
-    }
 
     @Override
     public void afterBindView() {
