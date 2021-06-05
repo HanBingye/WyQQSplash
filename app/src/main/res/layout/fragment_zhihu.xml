@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".main.shanghai.ZhihuFrag">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_zhihu"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                app:layout_scrollFlags="scroll|enterAlways"
+
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin">
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_zhihu"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <TextView
+        app:layout_behavior="@string/bottom_show_behavior"
+        android:gravity="center"
+        android:layout_gravity="bottom"
+        android:text="我是底部"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"/>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
