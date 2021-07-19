@@ -15,9 +15,7 @@ import butterknife.BindView;
 @ViewInject(mainlayoutid = R.layout.fragment_beijing)
 public class BeijingFrag extends BaseFragment {
 
-    static {
-        System.loadLibrary("native-lib");
-    }
+
 
     @BindView(R.id.gl_surface)
     GLSurfaceView glSurface;

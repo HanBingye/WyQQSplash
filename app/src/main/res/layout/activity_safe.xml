@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+
+    tools:context=".main.shenzhen.SafeActivity">
+
+    <EditText
+        android:id="@+id/et_MD5plainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_100"
+        android:gravity="center"
+        android:hint="请输入MD5明文" />
+
+    <Button
+        android:id="@+id/bt_secret1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="MD5加密" />
+
+    <TextView
+        android:id="@+id/tv_MD5cipherText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:gravity="center"
+        android:text="**********"
+        android:textColor="@color/color_FF7F1D"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/et_AESPlainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_100"
+        android:gravity="center"
+        android:hint="请输入AES明文" />
+
+    <Button
+        android:id="@+id/bt_secret2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="AES加密" />
+
+    <TextView
+        android:id="@+id/tv_AESCipherText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:gravity="center"
+        android:text="密文**********"
+        android:textColor="@color/color_FF7F1D"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_AESPlainText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:gravity="center"
+        android:text="明文**********"
+        android:textColor="@color/color_FF7F1D"
+        android:textSize="15sp" />
+
+
+</LinearLayout>

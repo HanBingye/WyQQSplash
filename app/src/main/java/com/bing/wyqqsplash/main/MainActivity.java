@@ -60,6 +60,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private boolean isShanghaiChecked;
 
 
+
+
     @Override
     public void afterBindView() {
         initFragment();

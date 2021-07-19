@@ -1,0 +1,26 @@
+plugins {
+    id 'java-library'
+}
+sourceSets {
+    main{
+        java{
+            srcDir('src/main/java')
+        }
+        resources{
+            srcDir('src/main/resources')
+        }
+    }
+}
+dependencies {
+
+    //https://github.com/tinify/tinify-java图片压缩
+    implementation'com.tinify:tinify:1.6.2'
+}
+//解决集成不了tinify的问题
+repositories {
+    mavenCentral()
+
+    google()
+    jcenter()
+}
+
