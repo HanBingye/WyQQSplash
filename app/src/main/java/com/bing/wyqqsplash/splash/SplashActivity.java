@@ -3,6 +3,7 @@ package com.bing.wyqqsplash.splash;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -42,6 +43,7 @@ public class SplashActivity extends BaseActivity {
 
     private void initVideo() {
         vvSplash.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.movie));
+        Log.d("initVideo", getPackageName() );
         vvSplash.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {

@@ -6,5 +6,5 @@
     <string name="main_rb_beijing">北京</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="bottom_show_behavior" >com.bing.wyqqsplash.main.shanghai.BottomShowBehavior</string>
+    <string name="bottom_show_behavior">com.bing.wyqqsplash.main.shanghai.BottomShowBehavior</string>
 </resources>

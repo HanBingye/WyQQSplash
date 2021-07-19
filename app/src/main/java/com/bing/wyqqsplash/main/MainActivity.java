@@ -1,5 +1,6 @@
 package com.bing.wyqqsplash.main;
 
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -83,8 +84,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         transaction.hide(shanghaiFrag);
         transaction.hide(shenzhenFrag);
         transaction.commit();
+
         isHangzhouChecked = true;
         rbHangzhou.playAnimation();
+        rbShenzhen.setChecked(true);
 
 //        rgMainTop.setOnCheckedChangeListener(this);
         rgMainBottom.setOnCheckedChangeListener(this);
@@ -130,6 +133,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 change = !change;
                 if (change) {
                     changeAnimation(rgMainTop, rgMainBottom);
+
                     if (rbShenzhen.isChecked()) {
                         showShenzhenFrag(transaction);
                     }
@@ -219,5 +223,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         transaction.show(beijingFrag);
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("MainActivity", "onDestroy: ");
+    }
 }

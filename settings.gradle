@@ -1,3 +1,7 @@
+include ':jetpack'
+include ':library'
+include ':ipc'
+include ':player'
 include ':refresh'
 include ':http'
 include ':mvp'

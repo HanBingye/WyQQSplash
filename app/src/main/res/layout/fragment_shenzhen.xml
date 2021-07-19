@@ -4,13 +4,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+
     tools:context=".main.shenzhen.ShenzhenFrag">
 
-    <TextView
+    <Button
+        android:id="@+id/bt_shenzhen"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/skip"
+        android:gravity="center"
+        android:text="去杭州旅游" />
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="深圳" />
+    <Button
+        android:id="@+id/bt_weixin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/skip"
+        android:gravity="center"
+        android:text="微信小程序" />
+
+    <Button
+        android:id="@+id/bt_safe"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/skip"
+        android:gravity="center"
+        android:text="ANDROID安全" />
+    <Button
+        android:id="@+id/bt_jetPack"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/skip"
+        android:gravity="center"
+        android:text="jetPack" />
 
 </LinearLayout>

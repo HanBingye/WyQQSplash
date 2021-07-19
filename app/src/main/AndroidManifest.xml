@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".base.EntryApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,7 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WyQQSplash"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.hangzhou.HangzhouDetailActivity"></activity>
+        <activity android:name=".main.shenzhen.SafeActivity"></activity>
+        <activity android:name=".main.shenzhen.WeixinActivity" />
+        <activity android:name=".main.shenzhen.mvvm.MvvmActivity" />
+        <activity android:name="com.bing.jetpack.navigation.NavigationActivity" />
+
+        <service android:name="com.bing.ipc.service.IpcService" />
+
+
+        <activity
+            android:name=".main.hangzhou.HangzhouDetailActivity"
+            android:process=":hangzhou.detail" />
         <activity android:name=".main.MainActivity" />
         <activity
             android:name=".splash.SplashActivity"
@@ -24,6 +35,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="playerType"
+            android:value="1" />
     </application>
 
 </manifest>

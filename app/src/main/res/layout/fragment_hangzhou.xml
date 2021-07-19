@@ -21,6 +21,7 @@
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
             <ImageView
+                android:id="@+id/iv_hangzhou_bg"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
@@ -29,35 +30,61 @@
                 app:layout_collapseParallaxMultiplier="0.6" />
 
             <androidx.appcompat.widget.Toolbar
-
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                app:contentInsetStart="@dimen/dp_0"
                 app:layout_collapseMode="pin">
 
-                <TextView
-                    android:id="@+id/tv_hangzhou_title"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:visibility="gone"
-                    android:text="杭州欢迎您"
-                    android:textColor="@color/white" />
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_hangzhou_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/skip"
+                        android:text="今日播报"
+                        android:textColor="@color/white"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_pmd"
+                        android:layout_width="@dimen/dp_100"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_toRightOf="@+id/tv_hangzhou_title"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:singleLine="true"
+                        android:text="尊敬的用户,目前播放的歌曲是:荣耀"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+
         <TextView
-            android:background="@color/design_default_color_primary_dark"
             android:layout_width="match_parent"
             android:layout_height="20dp"
+            android:background="@color/design_default_color_primary_dark"
             android:gravity="center"
             android:text="我是可以停留的"
             android:textColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rv_hangzhou"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_hangzhou"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

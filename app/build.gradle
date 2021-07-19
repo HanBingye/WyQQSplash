@@ -1,8 +1,16 @@
 plugins {
     id 'com.android.application'
+    id 'com.han.plugin'
 }
 
+
+
 android {
+
+    dataBinding {
+        enabled = true
+    }
+
     compileSdkVersion 29
     buildToolsVersion "30.0.2"
 
@@ -14,26 +22,48 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('D:\\androidstudio\\signature\\kuou.jks')
+            storePassword '123456'
+            keyAlias 'hanbing'
+            keyPassword '123456'
+        }
     }
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro', 'proguard-okhttp.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-}
 
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+tinyInfo{
+    resourcesSrc=['src/main/res/mipmap-xxhdpi']
+    apiKey="wuMdQbCB2D7Qj44dyYcRv1nNHd0N3rYd"
+
+}
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation files('libs\\classes.jar')
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
@@ -47,14 +77,24 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     //lottie
     implementation 'com.airbnb.android:lottie:2.2.5'
+    //j2v8
+    implementation 'com.eclipsesource.j2v8:j2v8:5.0.103@aar'
     //module的依赖注入
     implementation project(path: ':mvp')
     implementation project(path: ':http')
-    implementation project(path: ':refresh')
+    implementation project(path: ':player')
+    implementation project(path: ':ipc')
+    implementation project(path: ':jetpack')
+//    implementation project(path: ':refresh')
+    //将refresh module集成到云端服务器
+    implementation 'com.github.HanBingye:GodRefreshLayout:V1.0.0'
 
     //leakcanary检测内存泄漏
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
     testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+
+    //解决项目方法过多，超过65k个方法
+    implementation 'androidx.multidex:multidex:2.0.1'
 
 }

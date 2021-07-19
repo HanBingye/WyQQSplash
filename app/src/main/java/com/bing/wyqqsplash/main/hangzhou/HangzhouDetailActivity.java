@@ -12,6 +12,9 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
 import androidx.core.view.ViewCompat;
 
+import com.bing.ipc.IpcManager;
+import com.bing.ipc.request.IpcRequest;
+import com.bing.ipc.result.IResult;
 import com.bing.wyqqsplash.R;
 import com.bing.wyqqsplash.base.BaseActivity;
 import com.bing.wyqqsplash.base.ViewInject;
@@ -40,8 +43,23 @@ public class HangzhouDetailActivity extends BaseActivity {
     public void afterBindView() {
         // TODO: 2021/5/8
         initAnimation();
-        initGetNetData();
+//        initGetNetData();
+        initIpc();
+
 //        initPostNetData();
+    }
+
+    private void initIpc() {
+        IpcRequest request = new IpcRequest("hangzhou");
+        IpcManager.getInstance(this).enqueue(request, new com.bing.ipc.Callback() {
+            @Override
+            public void callback(IResult result) {
+                String data = result.getData();
+                Log.d("initIpc", data);
+            }
+        });
+//        IResult iResult = IpcManager.getInstance(this).execute(request);
+//        Log.d("initIpc", iResult.getData());
     }
 
     private void initPostNetData() {
@@ -74,14 +92,13 @@ public class HangzhouDetailActivity extends BaseActivity {
 //        xiaohuaTask.execute("desc", "1", "2");
 
 
-
-        OkHttpClient client=new OkHttpClient();
+        OkHttpClient client = new OkHttpClient();
         HttpUrl.Builder builder = HttpUrl.parse("http://v.juhe.cn/joke/content/list.php").newBuilder();
-        builder.addQueryParameter("sort","desc");
-        builder.addQueryParameter("page","1");
-        builder.addQueryParameter("pagesize","2");
-        builder.addQueryParameter("time",""+System.currentTimeMillis()/1000);
-        builder.addQueryParameter("key","bbc57dd5e4f05991aff09eafd2e667e0");
+        builder.addQueryParameter("sort", "desc");
+        builder.addQueryParameter("page", "1");
+        builder.addQueryParameter("pagesize", "2");
+        builder.addQueryParameter("time", "" + System.currentTimeMillis() / 1000);
+        builder.addQueryParameter("key", "bbc57dd5e4f05991aff09eafd2e667e0");
 
         Request request = new Request.Builder()
                 .url(builder.build())
@@ -91,7 +108,7 @@ public class HangzhouDetailActivity extends BaseActivity {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("initGetNetData", "onFailure: "+e);
+                Log.d("initGetNetData", "onFailure: " + e);
             }
 
             @Override
